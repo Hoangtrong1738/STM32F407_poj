@@ -61,56 +61,5 @@ float PID_Update(PID_t *pid, float target, float feedback, float dt)
 
 	return pid->output;
 	
-	/*
-	   if (!pid) return 0.0f;
-    if (dt <= 0.0f) return pid->output;
-
-    // 1. error
-    float error = target - feedback;
-
-    // 2. derivative (filtered nhẹ)
-    float derivative = (error - pid->prev_error) / dt;
-
-    // optional low-pass D (rất nên có)
-    derivative = 0.7f * derivative;
-
-    // 3. tentative output (chưa integral)
-    float p = pid->kp * error;
-    float i = pid->ki * pid->integral;
-    float d = pid->kd * derivative;
-
-    float output = p + i + d;
-
-    // 4. ANTI-WINDUP LOGIC
-    int saturated_high = (output > pid->output_max);
-    int saturated_low  = (output < pid->output_min);
-
-    // chỉ tích integral khi KHÔNG bị saturate
-    if (!((saturated_high && error > 0) ||
-          (saturated_low  && error < 0)))
-    {
-        pid->integral += error * dt;
-
-        // clamp integral
-        if (pid->integral > pid->integral_max)
-            pid->integral = pid->integral_max;
-        else if (pid->integral < pid->integral_min)
-            pid->integral = pid->integral_min;
-    }
-
-    // 5. recompute output sau anti-windup
-    output = pid->kp * error +
-             pid->ki * pid->integral +
-             pid->kd * derivative;
-
-    // 6. clamp final output
-    if (output > pid->output_max) output = pid->output_max;
-    if (output < pid->output_min) output = pid->output_min;
-
-    // 7. save state
-    pid->prev_error = error;
-    pid->output = output;
-
-    return output;
-	*/
+	
 }
