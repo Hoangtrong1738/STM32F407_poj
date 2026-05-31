@@ -4,7 +4,6 @@
 #include "uart.h"
 //#include "control.h"
 #include <stdio.h>
-#include "kinematics.h"
 #include "encoder.h"
 #include "motor.h"
 #include "control.h"
@@ -73,11 +72,11 @@ int main()
 	{
 		
         
-		if(millis() - prev_10ms >= 100)
+		if(millis() - prev_10ms >= 700)
         {
             prev_10ms = millis();
 
-            EncoderCounter_Update_10ms();
+            EncoderCounter_Update();
 
             float o_l = PID_Update(&pid_l,v_l_set,encoder_data.velocity_left_mps,dt_ms);
             float o_r = PID_Update(&pid_r,v_r_set,encoder_data.velocity_right_mps,dt_ms);

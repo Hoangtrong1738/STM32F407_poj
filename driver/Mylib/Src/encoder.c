@@ -7,7 +7,7 @@
 
 #include "encoder.h"
 #include "motor.h"
-#include "kinematics.h"
+#include "control.h"
 
 Encoder_data_t encoder_data = {0};
 static const float distance_per_pulse = (PI * WHEEL_DIAMETER_M) / ENCODER_PPR;
@@ -84,7 +84,7 @@ static void Encoder_R_init()//TIMER 5
 	TIM5->CR1 |= 1<<0;
 
 }
-void EncoderCounter_Update_10ms()
+void EncoderCounter_Update()
 {
 	i32 left = (i32)TIM3->CNT;
 	i32 right = (i32)TIM5->CNT;

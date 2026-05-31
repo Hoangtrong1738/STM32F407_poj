@@ -31,7 +31,7 @@ extern Encoder_data_t encoder_data;
 
 void Encoder_init();
 void Encoder_reset();
-void EncoderCounter_Update_10ms();
+void EncoderCounter_Update();
 void EncoderCounter_ResetDistance();
 
 
